@@ -1,0 +1,186 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fae1dd;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+}
+
+.valentines {
+  position: relative;
+  top: 50px;
+  cursor: pointer;
+  animation: up 3s linear infinite;
+}
+
+@keyframes up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+
+.envelope {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  background-color: #f08080;
+  border-radius: 5px;
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  width: 212px;
+  height: 212px;
+  top: -105px;
+  left: 44px;
+  background-color: #f08080;
+  transform: rotate(45deg);
+  border-radius: 30px 0 0 0;
+}
+
+.card {
+  position: absolute;
+  background-color: #eae2b7;
+  width: 270px;
+  height: 170px;        /* keep inside envelope */
+  top: 10px;
+  left: 15px;
+  box-shadow: -5px -5px 100px rgba(0, 0, 0, 0.4);
+  transform-origin: center;
+  cursor: pointer;
+  transition: all 0.5s ease;  /* smooth expansion on hover */
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 5;           /* initially behind front flap */
+}
+
+.card:hover {
+  width: 350px;         /* expand card on hover */
+  height: 350px;        /* expand to show full message */
+  top: -100px;          /* move above envelope */
+  left: -40px;          /* center expanded card */
+  z-index: 999;         /* bring to front */
+}
+
+.letter-text {
+  display: flex;                /* use flexbox */
+  justify-content: center;      /* horizontal center */
+  align-items: center;          /* vertical center */
+  text-align: center;           /* wrap lines nicely */
+  font-family: "Brush Script MT", cursive;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #003049;
+  overflow-y: auto;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+
+/* optional: dotted border inside card */
+.card:before {
+  content: "";
+  position: absolute;
+  border: 3px dotted #003049;
+  top: 0;            /* align to top edge */
+  left: 0;           /* align to left edge */
+  width: 100%;       /* full width of card */
+  height: 100%;      /* full height of card */
+  box-sizing: border-box;  /* include border in dimensions */
+  border-radius: 5px;      /* same as card corners */
+}
+
+.heart {
+  background-color: #d62828;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  position: relative;
+  top: 117px;
+  left: 110px;
+  transform: rotate(-45deg);
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: #d62828;
+  border-radius: 60%;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+}
+
+.heart:before { top: -15px; left: 0; }
+.heart:after { left: 15px; top: 0; }
+
+.hearts { position: absolute; }
+
+.one,.two,.three,.four,.five {
+  background-color: red;
+  display: inline-block;
+  width: 10px; height: 10px;
+  position: relative;
+  top: 50px;
+  transform: rotate(-45deg);
+}
+
+.one { left: 10px; animation: heart 1s ease-out infinite; }
+.two { left: 30px; animation: heart 2s ease-out infinite; }
+.three { left: 50px; animation: heart 1.5s ease-out infinite; }
+.four { left: 70px; animation: heart 2.3s ease-out infinite; }
+.five { left: 90px; animation: heart 1.7s ease-out infinite; }
+
+@keyframes heart {
+  0% { transform: translateY(0) rotate(-45deg) scale(0.3); opacity: 1; }
+  100% { transform: translateY(-150px) rotate(-45deg) scale(1.3); opacity: 0.5; }
+}
+
+.front {
+  position: absolute;
+  border-right: 180px solid #f4978e;
+  border-top: 95px solid transparent;
+  border-bottom: 100px solid transparent;
+  left: 120px;
+  top: 5px;
+  width: 0;
+  height: 0;
+  z-index: 10;
+}
+
+.front:before {
+  content: "";
+  position: absolute;
+  border-left: 300px solid #f8ad9d;
+  border-top: 195px solid transparent;
+  left: -120px;
+  top: -95px;
+  width: 0;
+  height: 0;
+}
+
+.shadow {
+  position: absolute;
+  width: 330px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.3);
+  top: 265px;
+  left: -15px;
+  animation: scale 3s linear infinite;
+  z-index: -1;
+}
+
+@keyframes scale {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.85); }
+}
