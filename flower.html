@@ -19,6 +19,17 @@ document.addEventListener("click", () => {
   }
 }, { once: true });
 </script>
+     <script>
+let clickCount = 0;
+
+document.addEventListener("click", function() {
+  clickCount++; // increase click counter
+
+  if (clickCount === 2) { // after 2 clicks
+    window.location.href = "love letter.html"; // redirect to the envelope page
+  }
+});
+</script>
 
 
 
